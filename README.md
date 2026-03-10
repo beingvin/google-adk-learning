@@ -1,52 +1,89 @@
-# Google ADK Agents
+# Google ADK Agents 🤖
 
-Collection of simple Google ADK agent examples for learning and experimentation.
+A collection of agentic workflow examples built using **Google's Agent Development Kit (ADK)**. This repository is designed for learning, testing multi-agent systems, and experimenting with Gemini models.
 
-## Included Examples
+---
 
-- `01_basic_agent_setup_web`: minimal web-oriented agent definition
-- `02_basic_agent_setup_CLI`: minimal CLI runner using an in-memory session
+## 📂 Project Structure
 
-## Requirements
+To comply with Python/Pydantic identifier requirements while maintaining chronological order, all project folders use an **underscore prefix**.
 
-- Python 3.12 or compatible version in your environment
-- Google ADK installed
-- A valid Google API key or model access configured for ADK
+- **`_01_basic_agent_setup_web`** — A minimal web-ready agent definition.
+- **`_02_basic_agent_setup_CLI`** — A lightweight CLI implementation using an in-memory session.
 
-## Setup
+---
 
-1. Create and activate a virtual environment.
-2. Install the required packages:
+## 🚀 Quick Start
 
+### 1. Prerequisites
+
+- **Python:** 3.12+
+- **API Key:** Obtain a Gemini API key from [Google AI Studio](https://aistudio.google.com/).
+- **Environment:** Ensure you have a virtual environment activated.
+
+### 2. Installation
 ```bash
 pip install google-adk google-genai python-dotenv
 ```
 
-3. Create a `.env` file inside each example folder that needs it.
+### 3. Configuration
 
-Example:
-
+Each example folder requires its own `.env` file. Create one and add your credentials:
 ```env
 GOOGLE_API_KEY=your_api_key_here
+# Optional: Set to 'true' if using Vertex AI
+GOOGLE_GENAI_USE_VERTEXAI=false
 ```
 
-## Run The CLI Example
+---
 
-From the repo root:
+## 🖥️ Running the Examples
 
+### Web UI Mode (Recommended)
+
+Launch the built-in Google ADK dashboard to interact with your agents visually.
 ```bash
-python 02_basic_agent_setup_CLI/agent.py
+# Option 1: Run on default port (8000)
+adk web
+
+# Option 2: Run on a custom port
+adk web --port 5000
 ```
 
-## Web Example
+Access the UI at: `http://localhost:<port_number>`
 
-The web example currently defines a root agent in:
+### CLI Mode
 
-- `01_basic_agent_setup_web/agent.py`
+For quick terminal-based testing without the web interface:
+```bash
+python _02_basic_agent_setup_CLI/agent.py
+```
 
-Use it as the starting point for an ADK web app or server integration.
+---
 
-## Notes
+## 🧪 Technical Details
 
-- `.env`, `.venv`, `.adk`, and Python cache files are excluded from git.
-- These examples use `gemini-2.5-flash-lite` in the current agent configuration.
+| Component | Specification |
+|---|---|
+| LLM Model | `gemini-2.0-flash` |
+| Framework | Google ADK |
+| Validation | Pydantic V2 |
+| Environment | `python-dotenv` |
+
+> [!IMPORTANT]
+> **Naming Rule:** Folder names must start with a letter or underscore (e.g., `_01_name`) because ADK uses these names as internal Python identifiers. Starting with a digit will trigger a `ValidationError`.
+
+---
+
+## 📝 Roadmap
+
+- [x] Basic Web & CLI Setup
+- [ ] Multi-agent Collaboration
+- [ ] Tool-calling (Function Calling)
+- [ ] RAG (Retrieval Augmented Generation) implementation
+
+---
+
+## 🛡️ License
+
+MIT License — Feel free to use this for your own learning and projects!
